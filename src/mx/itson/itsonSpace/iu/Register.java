@@ -5,6 +5,9 @@
 package mx.itson.itsonSpace.iu;
 
 import java.awt.BorderLayout;
+import conection.dataBase.ConexionDB;
+import controlador.Dao.consultas;
+
 
 /**
  *
@@ -34,12 +37,12 @@ public class Register extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BtnRegister = new javax.swing.JButton();
+        BtnSignInJPanel = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        JTxtPass = new javax.swing.JPasswordField();
+        JTxtEMail = new javax.swing.JTextField();
+        JTxtUser = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
@@ -67,33 +70,33 @@ public class Register extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Registrarse");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BtnRegister.setText("Registrarse");
+        BtnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BtnRegisterActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Iniciar Sesion");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        BtnSignInJPanel.setText("Iniciar Sesion");
+        BtnSignInJPanel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BtnSignInJPanelActionPerformed(evt);
             }
         });
 
         jLabel6.setText("¿Ya cuentas con un Usuario?");
 
-        jPasswordField1.setForeground(new java.awt.Color(102, 102, 102));
-        jPasswordField1.setText("jPasswordField1");
-        jPasswordField1.setBorder(null);
+        JTxtPass.setForeground(new java.awt.Color(102, 102, 102));
+        JTxtPass.setText("jPasswordField1");
+        JTxtPass.setBorder(null);
 
-        jTextField1.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField1.setText("Ingrese su correo electronico.");
-        jTextField1.setBorder(null);
+        JTxtEMail.setForeground(new java.awt.Color(102, 102, 102));
+        JTxtEMail.setText("Ingrese su correo electronico.");
+        JTxtEMail.setBorder(null);
 
-        jTextField2.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField2.setText(" Ingrese su nombre de usuario.");
-        jTextField2.setBorder(null);
+        JTxtUser.setForeground(new java.awt.Color(102, 102, 102));
+        JTxtUser.setText(" Ingrese su nombre de usuario.");
+        JTxtUser.setBorder(null);
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
         content.setLayout(contentLayout);
@@ -107,16 +110,16 @@ public class Register extends javax.swing.JPanel {
                     .addGroup(contentLayout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2)
+                            .addComponent(BtnSignInJPanel)
                             .addComponent(jLabel6)
-                            .addComponent(jButton1)
+                            .addComponent(BtnRegister)
                             .addComponent(jCheckBox1)
-                            .addComponent(jPasswordField1)
+                            .addComponent(JTxtPass)
                             .addComponent(jLabel4)
-                            .addComponent(jTextField1)
+                            .addComponent(JTxtEMail)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2)
+                            .addComponent(JTxtUser)
                             .addComponent(jSeparator1)
                             .addComponent(jSeparator2)
                             .addComponent(jSeparator3)
@@ -131,31 +134,31 @@ public class Register extends javax.swing.JPanel {
                 .addGap(29, 29, 29)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JTxtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JTxtEMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JTxtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jCheckBox1)
                 .addGap(9, 9, 9)
-                .addComponent(jButton1)
+                .addComponent(BtnRegister)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(BtnSignInJPanel)
                 .addGap(0, 78, Short.MAX_VALUE))
         );
 
@@ -177,11 +180,12 @@ public class Register extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void BtnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegisterActionPerformed
+       consultas con = new consultas();
+       con.guardarUsuario(JTxtUser.getText(), JTxtPass.getText());
+    }//GEN-LAST:event_BtnRegisterActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BtnSignInJPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSignInJPanelActionPerformed
         Login loginJP = new Login();
         loginJP.setSize(408, 461) ;
         loginJP.setLocation(0, 0);
@@ -190,25 +194,25 @@ public class Register extends javax.swing.JPanel {
         content.add(loginJP, BorderLayout.CENTER);
         content.revalidate();
         content.repaint();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BtnSignInJPanelActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnRegister;
+    private javax.swing.JButton BtnSignInJPanel;
+    private javax.swing.JTextField JTxtEMail;
+    private javax.swing.JPasswordField JTxtPass;
+    private javax.swing.JTextField JTxtUser;
     private javax.swing.JPanel content;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
