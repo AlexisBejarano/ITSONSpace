@@ -182,7 +182,7 @@ public class Register extends javax.swing.JPanel {
 
     private void BtnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegisterActionPerformed
        consultas con = new consultas();
-       con.guardarUsuario(JTxtUser.getText(), JTxtPass.getText());
+       con.guardarUsuario(JTxtUser.getText(), JTxtPass.getText(), JTxtEMail.getText());
     }//GEN-LAST:event_BtnRegisterActionPerformed
 
     private void BtnSignInJPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSignInJPanelActionPerformed

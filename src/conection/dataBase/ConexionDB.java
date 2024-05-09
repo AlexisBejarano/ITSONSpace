@@ -37,3 +37,5 @@ public class ConexionDB {
       return con;
     }
 }
+
+//LA BASE DE DATOS SE LLAMA "itsonspace", la tabla se llama "login", la tabla contiene idUsuario, nombre, clave, correo y tipoDeCuenta.

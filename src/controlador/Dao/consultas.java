@@ -5,8 +5,6 @@
 package controlador.Dao;
 
 import conection.dataBase.ConexionDB;
-import com.sun.jdi.connect.spi.Connection;
-import java.beans.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,9 +16,11 @@ import javax.swing.JOptionPane;
  * @author Aletz
  */
 public class consultas {
-   public void guardarUsuario(String usuario, String password){
+   public void guardarUsuario(String usuario, String password, String correo){
+       String tipoColaborador = "colaborador";
+       
         ConexionDB db = new ConexionDB();
-        String sql = "insert into itsonspace.login(nombre, clave) values ('" + usuario +"', '" + password +"');";
+        String sql = "insert into itsonspace.login(nombre, clave, correo, tipoDeCuenta) values ('" + usuario +"', '" + password +"', '" + correo +"', '" + tipoColaborador +"');";
         java.sql.Statement st;
         java.sql.Connection conexion = db.conectar();
         try
