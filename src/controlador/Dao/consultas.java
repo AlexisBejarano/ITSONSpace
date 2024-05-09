@@ -10,58 +10,64 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author Aletz
  */
 public class consultas {
-   public void guardarUsuario(String usuario, String password, String correo){
-       String tipoColaborador = "colaborador";
-       
+
+    public void guardarUsuario(String usuario, String password, String correo) {
+        String tipoColaborador = "colaborador";
+
         ConexionDB db = new ConexionDB();
-        String sql = "insert into itsonspace.login(nombre, clave, correo, tipoDeCuenta) values ('" + usuario +"', '" + password +"', '" + correo +"', '" + tipoColaborador +"');";
+        String sql = "insert into itsonspace.login(nombre, clave, correo, tipoDeCuenta) values ('" + usuario + "', '" + password + "', '" + correo + "', '" + tipoColaborador + "');";
         java.sql.Statement st;
         java.sql.Connection conexion = db.conectar();
-        try
-        {
+        try {
             st = conexion.createStatement();
             int rs = st.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Guardado correctamente");
-        }catch(SQLException e)
-        {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
-    
-    public void consultarUsuario(String user, String pass)
-    {
-        // TODO add your handling code here:
+
+    public void consultarUsuario(String user, String pass) {
         ConexionDB db = new ConexionDB();
-        // Se inicializa a null
         String usuarioCorrecto = null;
         String passCorrecto = null;
-    try {
+        String tipoDeCuenta = null;
 
-        java.sql.Connection cn = db.conectar();
-        PreparedStatement pst = cn.prepareStatement("SELECT nombre, clave FROM itsonspace.login");
-        ResultSet rs = pst.executeQuery();
+        try {
+            java.sql.Connection cn = db.conectar();
+            PreparedStatement pst = cn.prepareStatement("SELECT nombre, clave, tipoDeCuenta FROM itsonspace.login WHERE nombre = ?");
+            pst.setString(1, user);
+            ResultSet rs = pst.executeQuery();
 
-        if (rs.next()) {
-            usuarioCorrecto = rs.getString(1);
-            passCorrecto = rs.getString(2);
+            boolean usuarioEncontrado = false;
+
+            while (rs.next()) {
+                usuarioEncontrado = true;
+                usuarioCorrecto = rs.getString(1);
+                passCorrecto = rs.getString(2);
+                tipoDeCuenta = rs.getString(3);
+
+                if (pass.equals(passCorrecto)) {
+                    JOptionPane.showMessageDialog(null, "Login correcto Bienvenido " + user);
+                    break; // Salir del bucle si se encuentra una coincidencia
+                } else {
+                    JOptionPane.showMessageDialog(null, "Contraseña incorrecta para el usuario " + user);
+                }
+            }
+
+            if (!usuarioEncontrado) {
+                JOptionPane.showMessageDialog(null, "Usuario no encontrado: " + user);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error " + e);
         }
 
-        if (user.equals(usuarioCorrecto) && pass.equals(passCorrecto)) {
-            JOptionPane.showMessageDialog(null, "Login correcto Bienvenido " + user);
-        } else if (!user.equals(usuarioCorrecto) || pass.equals(passCorrecto)) {
-
-            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos " + user + pass);
-        }
-
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Error " + e);
     }
-    }
-    
+
 }
