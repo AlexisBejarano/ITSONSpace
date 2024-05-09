@@ -53,7 +53,13 @@ public class consultas {
                 tipoDeCuenta = rs.getString(3);
 
                 if (pass.equals(passCorrecto)) {
-                    JOptionPane.showMessageDialog(null, "Login correcto Bienvenido " + user);
+                    String mensaje = "Login correcto. Bienvenido " + user + ".\n";
+                    if (tipoDeCuenta.equals("admin")) {
+                        mensaje += "Esta cuenta es Admin.";
+                    } else {
+                        mensaje += "Esta cuenta es Colaborador.";
+                    }
+                    JOptionPane.showMessageDialog(null, mensaje);
                     break; // Salir del bucle si se encuentra una coincidencia
                 } else {
                     JOptionPane.showMessageDialog(null, "Contraseña incorrecta para el usuario " + user);
