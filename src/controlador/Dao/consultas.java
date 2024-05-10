@@ -20,7 +20,9 @@ public class consultas {
         String tipoColaborador = "colaborador";
 
         ConexionDB db = new ConexionDB();
-        String sql = "insert into itsonspace.login(nombre, clave, correo, tipoDeCuenta) values ('" + usuario + "', AES_ENCRYPT('" + password + "', 'Clave128Bits1234'), '" + correo + "', '" + tipoColaborador + "');";
+        String sql = "CALL itsonspace.insertar_usuario('" + usuario + "', '" + password + "', '" + correo + "', '" + tipoColaborador + "');";
+      
+
         java.sql.Statement st;
         java.sql.Connection conexion = db.conectar();
         try {
@@ -40,7 +42,7 @@ public class consultas {
 
         try {
             java.sql.Connection cn = db.conectar();
-            PreparedStatement pst = cn.prepareStatement("SELECT nombre, AES_DECRYPT(clave, 'Clave128Bits1234'), tipoDeCuenta FROM itsonspace.login WHERE nombre = ?");
+            PreparedStatement pst = cn.prepareStatement("{call itsonspace.obtener_usuario(?)}");
             pst.setString(1, user);
             ResultSet rs = pst.executeQuery();
 
