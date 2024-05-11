@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `itsonspace` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `itsonspace`;
 -- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: itsonspace
@@ -31,12 +33,11 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_usuario`(
     IN p_usuario VARCHAR(255),
     IN p_password VARCHAR(255),
-    IN p_correo VARCHAR(255),
-    IN p_tipoColaborador VARCHAR(255)
+    IN p_correo VARCHAR(255)
 )
 BEGIN
     INSERT INTO itsonspace.login(nombre, clave, correo, tipoDeCuenta)
-    VALUES (p_usuario, AES_ENCRYPT(p_password, 'Clave128Bits1234'), p_correo, p_tipoColaborador);
+    VALUES (p_usuario, AES_ENCRYPT(p_password, 'Clave128Bits1234'), p_correo, 'colaborador');
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -76,4 +77,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-10 14:17:35
+-- Dump completed on 2024-05-10 17:05:52

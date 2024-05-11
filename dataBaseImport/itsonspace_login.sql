@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `itsonspace` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `itsonspace`;
 -- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: itsonspace
@@ -29,7 +31,7 @@ CREATE TABLE `login` (
   `correo` varchar(45) DEFAULT NULL,
   `tipoDeCuenta` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +40,7 @@ CREATE TABLE `login` (
 
 LOCK TABLES `login` WRITE;
 /*!40000 ALTER TABLE `login` DISABLE KEYS */;
-INSERT INTO `login` VALUES (45,'admin',_binary 'qW?T~—π2/º\∆5\n≥ì','admin@ITSONspace.mx','admin'),(46,'rodolfo',_binary '\‰™‹ÆaçD±Ûp˚}2Wø','rodri@ITSONspace.mx','colaborador'),(47,'tusi',_binary '\–>∂\Ô?,M2\"H\·*]]','tusi@ITSONspace.mx','colaborador'),(48,'aaaa',_binary ':Ö\·)ãå˚PP9)h\›','aaaa','colaborador'),(49,'animal',_binary '˜ï]Ø\…í®•É\‹zjÇt','inge@pet.com','colaborador');
+INSERT INTO `login` VALUES (45,'admin',_binary 'qW?T~—π2/º\∆5\n≥ì','admin@ITSONspace.mx','admin'),(46,'rodolfo',_binary '\‰™‹ÆaçD±Ûp˚}2Wø','rodri@ITSONspace.mx','colaborador');
 /*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-10 14:17:35
+-- Dump completed on 2024-05-10 17:05:52
