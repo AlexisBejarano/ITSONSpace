@@ -17,10 +17,9 @@ import javax.swing.JOptionPane;
 public class consultas {
 
     public void guardarUsuario(String usuario, String password, String correo) {
-        String tipoColaborador = "colaborador";
 
         ConexionDB db = new ConexionDB();
-        String sql = "CALL itsonspace.insertar_usuario('" + usuario + "', '" + password + "', '" + correo + "', '" + tipoColaborador + "');";
+        String sql = "CALL itsonspace.insertar_usuario('" + usuario + "', '" + password + "', '" + correo + "');";
       
 
         java.sql.Statement st;
